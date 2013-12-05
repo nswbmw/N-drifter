@@ -1,0 +1,12 @@
+{
+  "name": "drifter",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "*",
+    "redis": "*",
+    "mongoose": "*"
+  },
+  "devDependencies": {
+    "request": "*"
+  }
+}
