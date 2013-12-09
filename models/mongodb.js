@@ -51,7 +51,7 @@ exports.reply = function(_id, reply, callback) {
     var newBottle = {};
     newBottle.bottle = _bottle.bottle;
     newBottle.message = _bottle.message;
-    // 如果捡瓶子的人第一次回复漂流瓶，则在 bottle 键添加漂流瓶主人
+    // 如果捡瓶子的人第一次回复漂流瓶，则在 bottle 键添加漂流瓶主人信息
     // 如果已经回复过漂流瓶，则不再添加
     if (newBottle.bottle.length === 1) {
       newBottle.bottle.push(_bottle.message[0][0]);

@@ -17,9 +17,10 @@ exports.throw = function(bottle, callback) {
         // 检查是否是当天第一次扔瓶子
         // 若是，则设置记录该用户扔瓶次数键的生存期为 1 天
         // 若不是，生存期保持不变
-        client2.TTL(bottle.owner, function (err, _ttl) {
-          var ttl = (_ttl === -1) ? 86400 : _ttl;
-          client2.EXPIRE(bottle.owner, ttl);
+        client2.TTL(bottle.owner, function (err, ttl) {
+          if (ttl === -1) {
+            client2.EXPIRE(bottle.owner, 86400);
+          }
         });
       });
       bottle.time = bottle.time || Date.now();
@@ -77,9 +78,10 @@ exports.pick = function(info, callback) {
         // 检查是否是当天第一次捡瓶子
         // 若是，则设置记录该用户捡瓶次数键的生存期为 1 天
         // 若不是，生存期保持不变
-        client3.TTL(info.user, function (err, _ttl) {
-          var ttl = (_ttl === -1) ? 86400 : _ttl;
-          client3.EXPIRE(info.user, ttl);
+        client3.TTL(info.user, function (err, ttl) {
+          if (ttl === -1) {
+            client3.EXPIRE(info.user, 86400);
+          }
         });
       });
       // 20% 概率捡到海星
