@@ -1,21 +1,23 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/drifter');
+mongoose.connect('mongodb://localhost/drifter', {server: {poolSize: 10}});
 
 // 定义漂流瓶模型，并设置数据存储到 bottles 集合
 var bottleModel = mongoose.model('Bottle', new mongoose.Schema({
   bottle: Array,
   message: Array
 }, {
-  collection: 'bottles' 
+  collection: 'bottles'
 }));
 
 // 将用户捡到漂流瓶改变格式保存
-exports.save = function(picker, _bottle) {
+exports.save = function(picker, _bottle, callback) {
   var bottle = {bottle: [], message: []};
   bottle.bottle.push(picker);
   bottle.message.push([_bottle.owner, _bottle.time, _bottle.content]);
   bottle = new bottleModel(bottle);
-  bottle.save();
+  bottle.save(function (err) {
+    callback(err);
+  });
 };
 
 // 获取用户捡到的所有漂流瓶

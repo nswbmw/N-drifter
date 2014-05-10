@@ -1,12 +1,14 @@
-{
-  "name": "drifter",
-  "version": "0.0.1",
-  "dependencies": {
-    "express": "*",
-    "redis": "*",
-    "mongoose": "*"
-  },
-  "devDependencies": {
-    "request": "*"
-  }
-}
+    {
+      "name": "drifter",
+      "version": "0.0.1",
+      "dependencies": {
+        "express": "^3",
+        "redis": "*",
+        "node-uuid": "*",
+        "generic-pool": "*",
+        "mongoose": "*"
+      },
+      "devDependencies": {
+        "request": "*"
+      }
+    }

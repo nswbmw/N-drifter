@@ -1,4 +1,4 @@
-var request = require('../node_modules/request');
+var request = require('request');
 
 for (var i = 1; i <= 5; i++) {
   (function(i) {
