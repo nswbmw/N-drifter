@@ -44,7 +44,7 @@ exports.getOne = function(_id, callback) {
 
 // 回复特定 id 的漂流瓶
 exports.reply = function(_id, reply, callback) {
-  reply.time = reply.time || Date.now();
+  reply.time = reply.time || Date.now().toString();
   // 通过 id 找到要回复的漂流瓶
   bottleModel.findById(_id, function (err, _bottle) {
     if (err) {
