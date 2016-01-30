@@ -26,7 +26,7 @@ app.get('/', function (req, res) {
   if (!req.query.user) {
     return res.json({code: 0, msg: "信息不完整"});
   }
-  if (req.query.type && (["male", "female"].indexOf(req.query.type) === -1)) {
+  if (req.query.type && (["male", "female", "all"].indexOf(req.query.type) === -1)) {
     return res.json({code: 0, msg: "类型错误"});
   }
   redis.pick(req.query, function (result) {
